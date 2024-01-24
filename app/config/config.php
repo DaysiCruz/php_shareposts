@@ -9,4 +9,6 @@ define ( 'APPROOT', dirname(dirname(__FILE__))) ;
 //URL Root
 define('URLROOT', '_YOUR_URL_');
 // Site name
-define('SITENAME', '_YOUR_SETNAME_');
+define('SETNAME', 'SharePosts');
+//App Version 
+define('APPVERSION', '1.0.0');
