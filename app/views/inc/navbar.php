@@ -1,4 +1,5 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
+  <div class="container">
   <div class="container-fluid">
     <a class="navbar-brand" href="<?php echo URLROOT; ?>"><?php echo SETNAME; ?></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,5 +23,6 @@
         </li>
       </ul>
     </div>
+  </div>
   </div>
 </nav>

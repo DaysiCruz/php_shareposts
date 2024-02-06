@@ -19,7 +19,7 @@ class Core {
             //Unset 0 Index
             unset($url[0]);
         }
-        //Require the controller 
+        //Require the controller
         require_once '../app/controllers/' . $this->currentController . '.php';
 
         //Instantiate controller class
@@ -32,14 +32,16 @@ class Core {
                 $this->currentMethod = $url[1];
             // Unset 1 index
             unset($url[1]);
-            }
+            } else {
+                // Si el método no existe en el controlador, puedes manejarlo de alguna manera, como mostrar un mensaje de error.
+                die('Método no encontrado en el controlador');
         }
+    }
         //Get params
         $this->params = $url ? array_values($url) : [];
 
         // Call a callback with array of params
         call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
-        
     }
     public function getUrl() {
         if (isset($_GET['url'])) {
