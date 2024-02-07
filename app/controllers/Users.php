@@ -57,8 +57,9 @@ class User extends Controller {
                 
                 //Has password 
                 $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
-                //Register User
+                // Register User
                 if ($this->userModel->register($data)) {
+                    flash('register_succes', 'You are registered and can LogIn');
                     redirect('user/login');
                 } else {
                     die('Something went wrong');
