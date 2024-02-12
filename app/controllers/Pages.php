@@ -4,7 +4,9 @@ class Pages extends Controller {
         
     }
     public function index() {
-        
+        if(isLoggenInd()) {
+            redirect('posts');
+        }
         $data = ['title' => 'Welcome', 
         'description' => 'Simple social network built on the TraversyMVC PHP Framework'];
         $this->view('pages/index', $data);
