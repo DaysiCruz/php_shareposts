@@ -25,4 +25,10 @@ function flash($name = '', $message = '', $class = 'alert alert-succes') {
         }
     }
 }
-;
+function isLoggenInd() {
+    if (isset($_SESSION['user_id'])) {
+        return true;
+    } else {
+        return false;
+    }
+}
