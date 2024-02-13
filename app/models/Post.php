@@ -36,6 +36,21 @@ class Post {
             return false;
         }
     }
+    public function updatePost($data) {
+        //Register User
+        $this->db->query('UPDATE posts SET tittle = :tittle, body = :body WHERE id = :id');
+        //Bind Values
+        $this->db->bind(':id', $data['id']);
+        $this->db->bind(':tittle', $data['name']);
+        $this->db->bind(':body', $data['body']);
+
+        // Excute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public function getPostById($id){
         $this->db->query("SELECT * FROM posts WHERE id = :id");
         $this->db->bind(':id', $id);
