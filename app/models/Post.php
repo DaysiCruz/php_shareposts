@@ -21,5 +21,20 @@ class Post {
 
         return $results;
     }
+    public function addPost($data) {
+        //Register User
+        $this->db->query('INSERT INTO posts(tittle,user_id,body) VALUES(:name,:email,:password)');
+        //Bind Values
+        $this->db->bind(':tittle', $data['name']);
+        $this->db->bind(':user_id', $data['email']);
+        $this->db->bind(':body', $data['password']);
+
+        // Excute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
