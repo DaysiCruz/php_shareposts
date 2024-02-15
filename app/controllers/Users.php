@@ -1,5 +1,6 @@
 <?php 
-class User extends Controller {
+class Users extends Controller {
+    private $userModel;
     public function __construct() {
         $this->userModel = $this->model('User');
     }
@@ -9,7 +10,7 @@ class User extends Controller {
             //Process form
 
             //Sanitize POST data
-            $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
 
             $data =[
                 'name' => trim($_POST['name']),
@@ -91,7 +92,7 @@ class User extends Controller {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Process form
 
-            $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
 
             $data =[
                 'email' => trim($_POST['email']),

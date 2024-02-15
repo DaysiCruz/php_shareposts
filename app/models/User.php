@@ -4,8 +4,8 @@ class User {
     public function __construct(){
         $this->db = new Database;
     }
-    //Register User 
-    public function registerUser($data){
+    //Register User
+    public function register($data){
         $this->db->query('INSERT INTO user(name,email,password) VALUES(:name,:email,:password)');
         //Bind Values
         $this->db->bind(':name', $data['name']);

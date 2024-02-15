@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
 * App Core Class
 * Creates
 *URL FORMAT -/controller/method/params

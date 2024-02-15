@@ -1,9 +1,12 @@
 <?php
 ////DB params
-define('DB_HOST', 'shareposts.com');
+define('DB_HOST', 'LAPTOP-R12H0CL2');
 define('DB_USER', 'root');
-define('DB_PASSWORD', '12345');
+define('DB_PASSWORD', '');
 define('DB_NAME', 'shareposts');
+
+
+
 //App Root
 define ( 'APPROOT', dirname(dirname(__FILE__))) ;
 //URL Root
