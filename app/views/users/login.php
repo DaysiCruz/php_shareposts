@@ -8,14 +8,14 @@
     <form action="<?php echo URLROOT; ?>/users/login" method="post">
 <div class="form-group">
     <label for="name">Email: <sup>*</sup></label>
-    <input type="email" name="name" class="form-control form-control-lg is-invalid <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>
-    <?php echo $data['name']; ?>">
+    <input type="email" name="name" class="form-control form-control-lg is-invalid" <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>>
+    <?php echo $data['name']; ?>
     <span class="invalid-feedback"><?php echo $data['name_err']; ?></span>
 </div>
 <div class="form-group">
     <label for="name">Password: <sup>*</sup></label>
-    <input type="password" name="password" class="form-control form-control-lg is-invalid <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>
-    <?php echo $data['name']; ?>">
+    <input type="password" name="password" class="form-control form-control-lg is-invalid" <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>>
+    <?php echo $data['name']; ?>
     <span class="invalid-feedback"><?php echo $data['name_err']; ?></span>
 </div>
 <div class="row">

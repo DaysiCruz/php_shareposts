@@ -1,5 +1,7 @@
 <?php 
 class Posts extends Controller {
+    private $postModel;
+    private $userModel;
     public function __construct(){
             if (!isLoggenInd()) {
                 redirect('/user/login');
@@ -21,7 +23,7 @@ class Posts extends Controller {
     public function add(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // Sanitize POST array
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
             $data = [
                 'tittle' => trim($_POST['tittle']),
                 'body' => trim($_POST['body']),
@@ -51,8 +53,7 @@ class Posts extends Controller {
                 // Load view with errors
                 $this->view('posts/add', $data);
             }
-          
-            
+
         } else {
             $data = [
                 'tittle' => '',
@@ -65,7 +66,7 @@ class Posts extends Controller {
     public function edit($id){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // Sanitize POST array
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
             $data = [
                 'edit' => $id,                'tittle' => trim($_POST['tittle']),
                 'body' => trim($_POST['body']),
