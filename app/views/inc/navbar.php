@@ -20,7 +20,7 @@
           <a class="nav-link" href="#">Welcome<?php echo $_SESSION['user_name']; ?></a>
         </li>
           <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
+          <a class="nav-link" href="<?php echo URLROOT; ?>/users/login">Logout</a>
         </li>
 
           <?php else : ?>

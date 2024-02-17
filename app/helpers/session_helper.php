@@ -5,7 +5,7 @@ session_start();
 // Flash message helper
 // EXAMPLE - Flash('register_succes','You are now registered', 'alert alert-danger');
 // DISPLAY IN VIEW - <?php echo flash('register_succes); 
-function flash($name = '', $message = '', $class = 'alert alert-succes') {
+function flash($name = '', $message = '', $class = 'alert alert-success') {
     if (!empty($name)) {
         if (!empty($message) && empty($_SESSION[$name])) {
             if (!empty($_SESSION[$name])) {

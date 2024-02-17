@@ -35,8 +35,8 @@ class Users extends Controller {
             //Validate Name
             if (empty($data['name'])) {
                 $data['name_err'] = 'Please add your name';
-            } 
-            //Validate Password
+            }
+            //Validate Password/
             if (empty($data['password'])) {
                 $data['password_err'] = 'Please add your email';
             } elseif(strlen($data['password'] < 6)) {
@@ -60,7 +60,7 @@ class Users extends Controller {
                 $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
                 // Register User
                 if ($this->userModel->register($data)) {
-                    flash('register_succes', 'You are registered and can LogIn');
+                    flash('register_success', 'You are registered and can LogIn');
                     redirect('user/login');
                 } else {
                     die('Something went wrong');
@@ -92,7 +92,7 @@ class Users extends Controller {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Process form
 
-            $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
 
             $data =[
                 'email' => trim($_POST['email']),
