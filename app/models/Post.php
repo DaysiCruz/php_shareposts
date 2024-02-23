@@ -23,7 +23,7 @@ class Post {
     }
     public function addPost($data) {
         //Register User
-        $this->db->query('INSERT INTO posts(title,user_id,body) VALUES(:name,:email,:password)');
+        $this->db->query('INSERT INTO posts(title,user_id,body) VALUES(:title, :user_id, :body)');
         //Bind Values
         $this->db->bind(':title', $data['title']);
         $this->db->bind(':user_id', $data['user_id']);

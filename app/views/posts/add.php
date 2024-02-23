@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php' ?>
 <a href="<?php echo URLROOT; ?>/posts" class="btn btn-lig"><i class="fa fa-backward"></i>Back</a>
-<div class="card card-body bg-light mt-5">
+<div class="card card-body bg-light w-5 mt-5">
     <h2>Add Posts </h2>
     <p>Create a post with this form</p>
     <form action="<?php echo URLROOT; ?>/posts/add" method="post">

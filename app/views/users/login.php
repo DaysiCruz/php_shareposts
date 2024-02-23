@@ -1,8 +1,8 @@
 <?php require APPROOT . '/views/inc/header.php' ?>
 <div class="row">
-    <div class="colm-md-6 mx-auto">
-        <div class="card card-body bg-light mt-2">
-            <?php flash('register_success'); ?>
+    <div class="col-md-6 mx-auto">
+        <div class="card card-body bg-light w-5 mt-2">
+            <!-- <?php flash('register_success'); ?> -->
     <h2>Login</h2>
     <p>Please fill in your credencials to login</p>
     <form action="<?php echo URLROOT; ?>/users/login" method="post">

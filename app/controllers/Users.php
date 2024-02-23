@@ -8,9 +8,8 @@ class Users extends Controller {
         // Check for Posts
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Process form
-
             //Sanitize POST data
-            $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
 
             $data =[
                 'name' => trim($_POST['name']),
@@ -48,15 +47,17 @@ class Users extends Controller {
             } else {
                 if ($data['password'] != $data['confirmPassword'])  {
                     $data['confirmPassword_err'] = 'Password o not match';
+                } else {
+                    $data['confirmPassword_err'] = '';
                 }
             }
 
             //Make sure errors are empty
-            if (empty($data['email_err']) && empty($data['email_err'])
+            if (empty($data['name_err']) && empty($data['email_err'])
             && empty($data['confirmPassword_err'])) {
-                //Validated 
+                //Validated
                 
-                //Has password 
+                //Has password
                 $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
                 // Register User
                 if ($this->userModel->register($data)) {
@@ -91,8 +92,7 @@ class Users extends Controller {
         // Check for Posts
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Process form
-
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
 
             $data =[
                 'email' => trim($_POST['email']),
@@ -146,7 +146,7 @@ class Users extends Controller {
             //load view
             $this->view('users/login', $data);
         }
-        }
+    }
         public function createUserSession($user) {
             $_SESSION['user_id'] = $user->id;
             $_SESSION['user_email'] = $user->email;
