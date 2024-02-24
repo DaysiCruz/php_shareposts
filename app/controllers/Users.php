@@ -62,7 +62,7 @@ class Users extends Controller {
                 // Register User
                 if ($this->userModel->register($data)) {
                     flash('register_success', 'You are registered and can LogIn');
-                    redirect('user/login');
+                    redirect('users/login'); // faltaba una s
                 } else {
                     die('Something went wrong');
                 }
@@ -88,6 +88,7 @@ class Users extends Controller {
             $this->view('users/register', $data);
         }
     }
+    
     public function login() {
         // Check for Posts
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -111,7 +112,7 @@ class Users extends Controller {
             }
             // Check for user/email
             if($this->userModel->findUserByEmail($data['email'])) {
-                // User found
+                // aqui deberia iniciar sesion o algo asi
             } else {
                 // User no found
                 $data['email_err'] = 'No user found';
@@ -124,7 +125,8 @@ class Users extends Controller {
                 $loggedInUser = $this->userModel->login($data['email'],$data['password']);
                 if ($loggedInUser) {
                     // Create Session
-                    $this->createUserSession($loggedInUser);
+                    $this->createUserSession($loggedInUser); // ahhh, es aqui
+                    die('sesion iniciada');
                 } else {
                     $data['password_err'] = 'Password Incorrect';
                     $this->view('users/login',$data);

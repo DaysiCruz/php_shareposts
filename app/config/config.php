@@ -1,7 +1,7 @@
 <?php
 ////DB params
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
+define('DB_USER', 'us_sharepost');
 define('DB_PASSWORD', 'toor1234');
 define('DB_NAME', 'shareposts');
 

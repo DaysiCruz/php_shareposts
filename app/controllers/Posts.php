@@ -3,7 +3,7 @@ class Posts extends Controller {
     private $postModel;
     private $userModel;
     public function __construct(){
-            if (!isLoggenInd()) {
+            if (!isLoggenIn()) {
                 redirect('/user/login');
             }
             $this->postModel = $this->model('Post');
@@ -29,7 +29,8 @@ class Posts extends Controller {
                 'body' => trim($_POST['body']),
                 'user_id' => $_SESSION['user_id'],
                 'tittle_err' => '',
-                'body_err' => ''
+                'body_err' => '',
+                'name_err' => ''
             ];
             
             // Validate tittle
@@ -58,6 +59,9 @@ class Posts extends Controller {
             $data = [
                 'tittle' => '',
                 'body' => '',
+                'tittle_err' => '',
+                'body_err' => '',
+                'name_err' => ''
             ];
     
             $this->view('posts/add',$data);
