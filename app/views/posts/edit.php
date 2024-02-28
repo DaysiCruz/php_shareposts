@@ -6,7 +6,7 @@
     <form action="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['id']; ?>" method="post">
 <div class="form-group">
     <label for="title">Tittle: <sup>*</sup></label>
-    <input type="text" name="tittle" class="form-control form-control-lg is-invalid <?php echo (!empty($data['title_err'])) ? 'is-invalid' : ''; ?>
+    <input type="text" name="title" class="form-control form-control-lg is-invalid <?php echo (!empty($data['title_err'])) ? 'is-invalid' : ''; ?>
     <?php if(isset($data['title'])) echo $data['title']; ?>">
     <span class="invalid-feedback"><?php if(isset($data['title_err'])) echo $data['title_err']; ?></span>
 </div>

@@ -14,7 +14,9 @@ class Post {
                                 users.created_at as userCreated
                                 FROM posts 
                                 INNER JOIN users 
-                                ON posts.user_id = :user_id
+                                ON users.id = posts.user_id
+                                WHERE
+                                posts.user_id = :user_id
                                 ORDER BY posts.created_at DESC
                                 ");
         $this->db->bind(':user_id', $_SESSION['user_id']);
@@ -45,16 +47,11 @@ class Post {
         $this->db->bind(':title', $data['title']);
         $this->db->bind(':body', $data['body']);
 
-        // Debugging: Log the SQL query and data bindings
-        error_log('SQL Query: ' . $this->db->getQuery());
-        error_log('Data Bindings: ' . print_r($this->db->getBindings(), true));
-
         // Excute
         if ($this->db->execute()) {
             error_log('Post updated successfully');
             return true;
         } else {
-            error_log('Error updating post: ' . $this->db->errorMessage());
             return false;
         }
     }
