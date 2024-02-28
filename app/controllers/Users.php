@@ -122,18 +122,18 @@ class Users extends Controller {
             if (empty($data['email_err']) && empty($data['password_err'])) {
                 //Validated
                 // Check and set logged in user
-                $loggedInUser = $this->userModel->login($data['email'],$data['password']);
+                $loggedInUser = $this->userModel->login($data['email'], $data['password']);
                 if ($loggedInUser) {
                     // Create Session
                     $this->createUserSession($loggedInUser); // ahhh, es aqui
-                    die('sesion iniciada');
+                    
                 } else {
                     $data['password_err'] = 'Password Incorrect';
                     $this->view('users/login',$data);
                 }
             } else {
                 //Load view with error
-                $this->view('users/register',$data);
+                $this->view('users/login',$data);
             }
         } else {
             // init data
@@ -160,6 +160,6 @@ class Users extends Controller {
             unset($_SESSION['user_email']);
             unset($_SESSION['user_name']);
             session_destroy();
-            redirect('users/login');
+            //redirect('users/login');
         }
     }

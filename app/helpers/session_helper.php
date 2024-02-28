@@ -26,7 +26,7 @@ function flash($name = '', $message = '', $class = 'alert alert-success') {
         }
     }
 }
-function isLoggenIn() {
+function isLoggendIn() {
     if (isset($_SESSION['user_id'])) {
         return true;
     } else {

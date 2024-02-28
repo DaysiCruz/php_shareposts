@@ -4,7 +4,7 @@ class Pages extends Controller {
         
     }
     public function index() {
-        if(isLoggenIn()) {
+        if(isLoggendIn()) {
             redirect('posts');
         }
         $data = ['title' => 'Welcome', 

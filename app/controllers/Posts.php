@@ -3,8 +3,8 @@ class Posts extends Controller {
     private $postModel;
     private $userModel;
     public function __construct(){
-            if (!isLoggenIn()) {
-                redirect('/user/login');
+            if (!isLoggendIn()) {
+                redirect('/users/login');
             }
             $this->postModel = $this->model('Post');
             $this->userModel = $this->model('User');
@@ -25,24 +25,24 @@ class Posts extends Controller {
             // Sanitize POST array
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
             $data = [
-                'tittle' => trim($_POST['tittle']),
+                'title' => trim($_POST['title']),
                 'body' => trim($_POST['body']),
                 'user_id' => $_SESSION['user_id'],
-                'tittle_err' => '',
+                'title_err' => '',
                 'body_err' => '',
                 'name_err' => ''
             ];
             
             // Validate tittle
-            if(empty($data['tittle'])) {
-                $data['tittle_err'] = 'Please enter tittle';
+            if(empty($data['title'])) {
+                $data['title_err'] = 'Please enter title';
             }
             // Validate Body
             if(empty($data['body'])) {
                 $data['body_err'] = 'Please enter Body';
             }
             // Make sure no errors
-            if (empty($data['tittle_err']) && empty($data['body_err'])) {
+            if (empty($data['title_err']) && empty($data['body_err'])) {
                 // Validated
                 if($this->postModel->addPost($data)){
                     flash('post_message', 'Post Added');
@@ -59,7 +59,7 @@ class Posts extends Controller {
             $data = [
                 'tittle' => '',
                 'body' => '',
-                'tittle_err' => '',
+                'title_err' => '',
                 'body_err' => '',
                 'name_err' => ''
             ];
@@ -72,27 +72,28 @@ class Posts extends Controller {
             // Sanitize POST array
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
             $data = [
-                'edit' => $id,                'tittle' => trim($_POST['tittle']),
-                'body' => trim($_POST['body']),
+                'id' => $id,
+                'title' => isset($_POST['title']) ? trim($_POST['title']) : '',
+                'body' => isset($_POST['body']) ? trim($_POST['body']) : '',
                 'user_id' => $_SESSION['user_id'],
-                'tittle_err' => '',
+                'title_err' => '',
                 'body_err' => ''
             ];
             
             // Validate tittle
-            if(empty($data['tittle'])) {
-                $data['tittle_err'] = 'Please enter tittle';
+            if(empty($data['title'])) {
+                $data['title_err'] = 'Please enter title';
             }
             // Validate Body
             if(empty($data['body'])) {
                 $data['body_err'] = 'Please enter Body';
             }
             // Make sure no errors
-            if (empty($data['tittle_err']) && empty($data['body_err'])) {
+            if (empty($data['title_err']) && empty($data['body_err'])) {
                 // Validated
                 if($this->postModel->updatePost($data)){
                     flash('post_message', 'Post Updated');
-                    redirect('post');
+                    redirect('posts');
                 } else {
                     die('Something went wrong');
                 }
@@ -106,15 +107,15 @@ class Posts extends Controller {
 
             // Check for owner
             if ($post->user_id != $_SESSION['user_id']) {
-                redirect('post');
+                redirect('posts');
             }
             $data = [
                 'id' => $id,
-                'tittle' => $post->tittle,
+                'title' => $post->title,
                 'body' => $post->body,
             ];
     
-            $this->view('posts/add',$data);
+            $this->view('posts/edit',$data);
         }
     }
     public function show($id) {
@@ -122,7 +123,7 @@ class Posts extends Controller {
         $user = $this->userModel->getUserById($post->user_id);
 
         $data = [
-            'posts' => $post,
+            'post' => $post,
             'user' => $user
         ];
         $this->view('posts/show',$data);
@@ -137,7 +138,7 @@ class Posts extends Controller {
             if ($post->user_id != $_SESSION['user_id']) {
                 redirect('post');
             }
-            if($this->postModel->delete($id)) {
+            if($this->postModel->deletePost($id)) {
                 flash('post_message', 'Post Removed');
                 redirect('post');
             } else {
