@@ -156,10 +156,11 @@ class Users extends Controller {
             redirect('posts');
         }
         public function logout() {
+            //var_dump('SUCCESS');
             unset($_SESSION['user_id']);
             unset($_SESSION['user_email']);
             unset($_SESSION['user_name']);
             session_destroy();
-            //redirect('users/login');
+            redirect('users/login');
         }
     }

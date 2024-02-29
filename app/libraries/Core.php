@@ -12,6 +12,10 @@ class Core {
     public function __construct() {
         //print_r($this->getUrl());
         $url = $this->getUrl();
+         // Si no hay URL proporcionada, establece una URL predeterminada
+        if ($url === null) {
+            $url = [''];
+        }
         //Look in controller for first value
         if(file_exists('../app/controllers/' . ucwords($url[0]). '.php')) {
             //If exists , set as controller

@@ -15,11 +15,8 @@ class Post {
                                 FROM posts 
                                 INNER JOIN users 
                                 ON users.id = posts.user_id
-                                WHERE
-                                posts.user_id = :user_id
                                 ORDER BY posts.created_at DESC
                                 ");
-        $this->db->bind(':user_id', $_SESSION['user_id']);
         $results = $this->db->resultSet();
         
         return $results;
