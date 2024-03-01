@@ -8,8 +8,9 @@ Written by <?php echo $data['user']->name; ?> on <?php if(isset($data['post'])) 
     <?php if(isset($data['post'])) if($data['post']->user_id == $_SESSION['user_id']) : ?>
         <hr>
         <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->id; ?>"class="btn btn-dark">Edit</a>
-    <form class="pull-right" action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']->id; ?>" method="post">
-        <input type="submit" value="delete" class="btn btn-danger">
+
+    <form class="d-grid gap-2 d-md-flex justify-content-md-end" action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']->id; ?>" method="post">
+        <input type="submit" value="delete" class="btn btn-danger me-md-2">
     </form>
         
         <?php endif ; ?>
